@@ -57,5 +57,3 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 
-# 導入したが必要なかった。エラー発生したら削除してbundle install実行する
-gem 'font-awesome-sass'
