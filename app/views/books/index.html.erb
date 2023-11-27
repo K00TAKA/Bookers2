@@ -15,14 +15,22 @@
           <td><%= @user.introduction %></td>
         </tr>
       </table>
-      <div class="com-4 mx-auto">
+      <div class="mx-auto mb-3">
         <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
           <i class="fas fa-user-gear"></i>
         <% end %>
       </div>
       
       <h1>New book</h1>
-      
+      <%= form_with model: @Book do |f| %>
+        <p>Title</p>
+        <%= f.text_field :title %>
+        <p>Opinion</p>
+        <%= f.text_area :opinion %>
+        <div class="button">
+          <button type="submit" class="btn-success">Create Book</button>
+        </div>
+      <% end %>
     </div>
     
     <div class="col-6 mx-auto">
