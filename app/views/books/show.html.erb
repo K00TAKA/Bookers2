@@ -1,0 +1,63 @@
+<div>
+  <%= flash[:notice] %>
+</div>
+
+<div class="container">
+  <div class="row py-5">
+    <div class="col-4">
+      <h1>User info</h1>
+      <div class="image_tag">
+        <%= image_tag @user.get_image(100, 100)%>
+      </div>
+      <table class="table">
+        <tr>
+          <th>name</th>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <td><%= @user.introduction %></td>
+        </tr>
+      </table>
+      <div class="mx-auto mb-3">
+        <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
+          <i class="fas fa-user-gear"></i>
+        <% end %>
+      </div>
+      
+      <h1>New book</h1>
+      <% if @book.errors.any? %>
+        <%= @book.errors.count %>error prohibited this book from being saved
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <%= form_with model: Book do |f| %>
+        <p>Title</p>
+        <%= f.text_field :title %>
+        <p>Opinion</p>
+        <%= f.text_area :opinion %>
+
+        <%= f.submit "Create Book", class: 'btn btn-success' %>
+
+      <% end %>
+    </div>
+    
+    <div class="col-6 mx-auto">
+      <h1>Book detail</h1>
+      <table>
+        <tr>
+          <td><%= image_tag @book.get_image(100, 100)%></td>
+          <td><%= @book.title %></td>
+          <td><%= @book.opinion %></td>
+          <td><%= link_to "edit", edit_book_path(book.id) %></td>
+          <td><%= link_to "destroy", book_path(book.id), method: :delete, "data-confirm" => "Are You Sure?" %></td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>
