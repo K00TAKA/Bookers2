@@ -22,19 +22,34 @@
       </div>
       
       <h1>New book</h1>
-      <%= form_with model: @Book do |f| %>
+      <%= form_with model: Book do |f| %>
         <p>Title</p>
         <%= f.text_field :title %>
         <p>Opinion</p>
         <%= f.text_area :opinion %>
-        <div class="button">
-          <button type="submit" class="btn-success">Create Book</button>
-        </div>
+
+        <%= f.submit "Create Book", class: 'btn btn-success' %>
+
       <% end %>
     </div>
     
     <div class="col-6 mx-auto">
       <h1>Books</h1>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Title</th>
+          <th>Opinion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= @books.each do |book| %>
+          <td><%= image_tag @user.get_image(100, 100)%></td>
+          <td><%= book.title %></td>
+          <td><%= book.opinion %></td>
+        <% end %>
+      </tbody>
+      
     </div>
   </div>
 </div>
