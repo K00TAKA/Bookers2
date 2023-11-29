@@ -51,15 +51,13 @@
       <table>
         <tr>
           <td><%= image_tag @book.get_image(100, 100)%></td>
-          <!--タイトルをshowページにリンクさせる-->
-          <td><%= @book.title %></td>
+          <td><a href="<%= book_path(@book) %>"><%= @book.title %></a></td>
           <td><%= @book.opinion %></td>
           <td><%= link_to "edit", edit_book_path(@book.id), class: 'btn btn-success' %></td>
           <td><%= link_to "destroy", books_path(@book.id), method: :delete, "data-confirm" => "Are You Sure?" , class: 'btn btn-danger'%></td>
         </tr>
         <tr>
-          <!--ユーザーネームをshowページにリンクさせるコード-->
-          <td><%= @user.name %></td>
+          <td><a href="<%= user_path(@user) %>"><%= @user.name %></a></td>
         </tr>
       </table>
 
