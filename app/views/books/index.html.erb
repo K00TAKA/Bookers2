@@ -53,7 +53,7 @@
       </thead>
       <tbody>
         <% @books.each do |book| %>
-          <td><%= image_tag @user.get_image(100, 100)%></td>
+          <td><%= image_tag @book.get_image(100, 100)%></td>
           <td><%= book.title %></td>
           <td><%= book.opinion %></td>
         <% end %>
