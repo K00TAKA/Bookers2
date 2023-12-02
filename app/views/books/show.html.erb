@@ -49,16 +49,20 @@
     <div class="col-6 mx-auto">
       <h1>Book detail</h1>
       <table>
-        <tr>
-          <td><%= image_tag @book.user.get_image(100, 100)%></td>
-          <td><%= link_to @book.title, book_path(@book) %></td>
-          <td><%= @book.opinion %></td>
-          <td><%= link_to "edit", edit_book_path(@book.id), class: 'btn btn-success' %></td>
-          <td><%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" , class: 'btn btn-danger'%></td>
-        </tr>
-        <tr>
-          <td><%= link_to @user.name, user_path(@user) %></td>
-        </tr>
+        <% @books.each do |book| %>
+          <tr>
+            <td><%= image_tag @book.user.get_image(100, 100)%></td>
+            <td><%= link_to @book.title, book_path(@book) %></td>
+            <td><%= @book.opinion %></td>
+            <% if book.user == current_user %>
+            <td><%= link_to "edit", edit_book_path(@book.id), class: 'btn btn-success' %></td>
+            <td><%= link_to "destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" , class: 'btn btn-danger'%></td>
+            <tr>
+              <td><%= link_to @user.name, user_path(@user) %></td>
+            </tr>
+            <% end %>
+          </tr>
+        <% end %>
       </table>
 
     </div>
