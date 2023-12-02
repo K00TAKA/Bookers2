@@ -12,17 +12,26 @@
       <% end %>
       
       <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
-      
+      <div class="row pb-3">
         <h5>Title</h5>
+      </div>
+      <div class="row pb-3">
         <%= f.text_field :title %>
-        
+      </div>
+      <div class="row pb-3">
         <h5>Opinion</h5>
+      </div>
+      <div class="row pb-3">
         <%= f.text_area :opinion %>
-        
+      </div>
+      <div class="row pb-3">
         <%= f.submit 'Update Book', class: 'btn btn-success' %>
+      </div>
+      <div class="row pb-3">
         <%= link_to "Show", book_path(@book.id) %>
+        <p>|</p>
         <%= link_to "Back",  "/books" %>
-        
+      </div>
       <% end %>
     </div>
 　</div>

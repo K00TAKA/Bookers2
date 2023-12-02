@@ -49,18 +49,23 @@
     <div class="col-6 mx-auto">
       <h1>Books</h1>
       <table>
-        <tr>
-          <th></th>
-          <th>Title</th>
-          <th>Opinion</th>
-        </tr>
-        <tr>
-          <%= @books.each do |book| %>
-            <td><%= image_tag @book.get_image(100, 100)%></td>
-            <td><a href="<%= book_path(@book) %>"><%= @book.title %></a></td>
-            <td><%= @book.opinion %></td>
-          <% end %>
-        </tr>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+        
+        <% @user.books.each do |book| %>
+          <tbody>
+            <tr>
+              <td><%= image_tag @user.get_image(100, 100)%></td>
+              <td><%= link_to book.title, book_path(book) %></td>
+              <td><%= book.opinion %></td>
+            </tr>
+          </tbody>
+        <% end %>
       </table>
 
     </div>
