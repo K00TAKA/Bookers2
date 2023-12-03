@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :is_matching_login_user, only: [:edit, :update]
+  
   def index
     @user = current_user
     @users = User.all
@@ -14,11 +16,13 @@ class UsersController < ApplicationController
   end
 
   def edit
+    is_matching_login_user
     @user = User.find(params[:id])
     @user_image = @user.image
   end
   
   def update
+    is_matching_login_user
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "You have updated user successfully."
@@ -31,6 +35,14 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :image, :introduction)
+  end
+  
+  def is_matching_login_user
+    user_id = params[:id]
+    login_user_id = current_user.id
+    if(user_id != login_user_id)
+      redirect_to books_path
+    end
   end
   
 end
