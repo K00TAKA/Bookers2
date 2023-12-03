@@ -10,27 +10,25 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @user = current_user
+    # @user = current_user
     @book = Book.new
     @books = @user.books
   end
 
   def edit
+    @user =　current_user
     is_matching_login_user
-    @user = User.find(params[:id])
-    @user_image = @user.image
+    # @user_image = @user.image
   end
   
-  def update
-    is_matching_login_user
-    @user = User.find(params[:id])
-    if @user.update(user_params)
-      flash[:notice] = "You have updated user successfully."
-      redirect_to books_path
-    else
-      render :edit
-    end
+def update
+  if current_user.update(user_params)
+    flash[:notice] = "You have updated user successfully."
+    redirect_to books_path
+  else
+    render :edit
   end
+end
   
   private
   def user_params

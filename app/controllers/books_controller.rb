@@ -27,7 +27,7 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     @user = current_user
-    # @user = @book.user（
+    # @user = @book.user（この書き方もある
   end
   
   def edit
@@ -44,14 +44,14 @@ class BooksController < ApplicationController
     else
       render :edit
     end
-    
-    def destroy
-      book = Book.find(params[:id])
-      book.destroy
-      redirect_to books_path
-    end
-    
   end
+  
+  def destroy
+    book = Book.find(params[:id])
+    book.destroy
+    redirect_to books_path
+  end
+    
 
   private
   
@@ -60,7 +60,8 @@ class BooksController < ApplicationController
   end
 
   def is_matching_login_user
-    user_id = params[:id]
+    book = Book.find(params[:id])
+    user_id = book.user.id
     login_user_id = current_user.id
     if(user_id != login_user_id)
       redirect_to books_path
