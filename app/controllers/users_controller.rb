@@ -22,14 +22,16 @@ class UsersController < ApplicationController
     @user_image = @user.image
   end
   
-def update
-  if current_user.update(user_params)
+  def update
+    is_matching_login_user
+    @user = current_user
+    if current_user.update(user_params)
     flash[:notice] = "You have updated user successfully."
-    redirect_to books_path
-  else
+    redirect_to user_path(@user.id)
+    else
     render :edit
+    end
   end
-end
   
   private
   def user_params
