@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index, :edit]
   before_action :is_matching_login_user, only: [:edit, :update]
   
   def index
@@ -16,9 +17,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user =　current_user
+    @user = User.find(params[:id])
     is_matching_login_user
-    # @user_image = @user.image
+    @user_image = @user.image
   end
   
 def update
@@ -38,7 +39,7 @@ end
   def is_matching_login_user
     user_id = params[:id]
     login_user_id = current_user.id
-    if(user_id != login_user_id)
+    if(user_id.to_i != login_user_id)
       redirect_to books_path
     end
   end
