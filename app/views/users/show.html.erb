@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="row py-5">
-    <div class="col-4">
+    <div class="col-md-3">
       <h1>User info</h1>
       <div class="image_tag">
         <%= image_tag @user.get_image(100, 100)%>
@@ -19,7 +19,7 @@
           <td><%= @user.introduction %></td>
         </tr>
       </table>
-      <div class="mx-auto mb-3">
+      <div>
         <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
           <i class="fas fa-user-gear"></i>
         <% end %>
@@ -46,9 +46,11 @@
       <% end %>
     </div>
     
-    <div class="col-6 mx-auto">
+    <div class="offset-md-1"></div>
+    
+    <div class="col-md-8">
       <h1>Books</h1>
-      <table>
+      <table class="table">
         <thead>
           <tr>
             <th></th>
