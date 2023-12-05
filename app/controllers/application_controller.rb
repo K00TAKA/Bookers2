@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   skip_before_action :authenticate_user!, only: [:about]
   
   def after_sign_in_path_for(resource)
-    books_path
+    user_path(current_user)
 
   end
   

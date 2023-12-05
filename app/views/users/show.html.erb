@@ -39,7 +39,7 @@
         <p>Title</p>
         <%= f.text_field :title %>
         <p>Opinion</p>
-        <%= f.text_area :opinion %>
+        <%= f.text_area :body %>
 
         <%= f.submit "Create Book", class: 'btn btn-success' %>
 
@@ -55,7 +55,7 @@
           <tr>
             <th></th>
             <th>Title</th>
-            <th>Opinion</th>
+            <th>Body</th>
           </tr>
         </thead>
         
@@ -64,7 +64,7 @@
             <tr>
               <td><%= image_tag @user.get_image(100, 100)%></td>
               <td><%= link_to book.title, book_path(book) %></td>
-              <td><%= book.opinion %></td>
+              <td><%= book.body %></td>
             </tr>
           </tbody>
         <% end %>
