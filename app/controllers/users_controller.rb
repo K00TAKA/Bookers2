@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index, :edit]
+  before_action :authenticate_user!
   before_action :is_matching_login_user, only: [:edit, :update]
   
   def index
     @user = current_user
     @users = User.all
-    @user_image = @user.profile_image
+    # @user_image = @user.profile_image
     @book = Book.new
   end
   
@@ -18,8 +18,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    is_matching_login_user
     @user_image = @user.profile_image
+    is_matching_login_user
   end
   
   def update
