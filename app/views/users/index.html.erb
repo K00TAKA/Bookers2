@@ -1,6 +1,6 @@
 
 <div class="container">
-  <div class="row py-5">
+  <div class="row">
     <div class="col-md-3">
       <h1>User info</h1>
       <div class="image_tag">
@@ -18,7 +18,7 @@
       </table>
       <div>
         <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
-          <i class="fas fa-user-gear"></i>
+          <i class="fas fa-user-cog"></i>
         <% end %>
       </div>
       
@@ -43,9 +43,7 @@
       <% end %>
     </div>
     
-    <div class="offset-md-1"></div>
-    
-    <div class="col-md-8">
+    <div class="col-md-8 offset-md-1">
       <h1>Users</h1>
       <table class="table">
         <thead>

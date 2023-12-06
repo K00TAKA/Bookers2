@@ -3,7 +3,7 @@
 </div>
 
 <div class="container">
-  <div class="row py-5">
+  <div class="row">
     <div class="col-md-3">
       <h1>User info</h1>
       <div class="image_tag">
@@ -21,7 +21,7 @@
       </table>
       <div>
         <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
-          <i class="fas fa-user-gear"></i>
+          <i class="fas fa-user-cog"></i>
         <% end %>
       </div>
       
@@ -46,9 +46,7 @@
       <% end %>
     </div>
     
-    <div class="offset-md-1"></div>
-    
-    <div class="col-md-8">
+    <div class="col-md-8 offset-md-1">
       <h1>Books</h1>
       <table class="table">
         <thead>
@@ -62,7 +60,11 @@
         <% @user.books.each do |book| %>
           <tbody>
             <tr>
-              <td><%= image_tag @user.get_image(100, 100)%></td>
+              <td>
+                <%= link_to user_path(@user) do %>
+                  <%= image_tag @user.get_image(100, 100)%>
+                <% end %>
+              </td>
               <td><%= link_to book.title, book_path(book) %></td>
               <td><%= book.body %></td>
             </tr>

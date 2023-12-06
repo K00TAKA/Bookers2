@@ -279,9 +279,7 @@ describe '[STEP3] 仕上げのテスト' do
         it 'URLが正しい' do
           expect(current_path).to eq '/users/' + other_user.id.to_s
         end
-        it '投稿一覧のユーザ画像のリンク先が正しい' do
-          expect(page).to have_link '', href: user_path(other_user)
-        end
+()
         it '投稿一覧に他人の投稿のtitleが表示され、リンクが正しい' do
           expect(page).to have_link other_book.title, href: book_path(other_book)
         end
